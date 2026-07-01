@@ -11,9 +11,7 @@ fp-info-cache
 # KiCad manufacturing outputs (optional but highly recommended to ignore)
 # Remove the # if you want to ignore them
 #*.gbr
-#*.drl
 #*.rpt
-#*.pos
 #*.bcm
 
 # Netlists and CAD exports
