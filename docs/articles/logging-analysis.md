@@ -1,0 +1,53 @@
+## Logging and Analysis
+
+This article covers how data from the device is logged to disk, and how to read and plot the logged data with `harp-python`.
+
+### Log Data
+
+Data from the device is logged by the [`DeviceDataWriter`] operator in the Harp device pattern, which saves raw data from all device registers in the Harp binary format to the folder set in its `Path` property:
+
+:::workflow
+![Harp Device Pattern](../workflows/harp-devicepattern.bonsai)
+:::
+
+While the workflow is running, registers are logged as the device produces messages (events and command echoes). Two properties of the [`Device`] operator are also important for logging:
+
+- `DumpRegisters` - Enabled by default, this property logs a read of every register when the device initializes, capturing the initial state of the device at the start of the experiment.
+- `Heartbeat` - Disabled by default, enable it to regularly log the device's hardware timestamp. On the Timestamp Generator Gen3, the [`Timer`](generate-timer-events.md) events can perform the same function at a higher frequency.
+
+> [!WARNING]
+> The register dump can be used as an approximate start time for the workflow or experiment, but keep in mind that other devices in the workflow may initialize at a different time.
+
+### Analyze Data
+
+The `harp-python` library imports data stored in the Harp binary format as [pandas](https://pandas.pydata.org/) DataFrames, which can then be analyzed with any `pandas` compatible plotting or analysis library.
+
+The following example demonstrates how to read and plot the [`Timer`](generate-timer-events.md) counter data.
+
+> [!NOTE]
+> This example requires a Python environment with [harp-python](installation.md#software-packages) and [`matplotlib`](https://matplotlib.org/) installed.
+
+```python
+# Import the dependencies
+import harp
+import matplotlib.pyplot as plt
+
+# Create a device object by loading the saved folder
+device = harp.create_reader("./Data/TimestampGeneratorGen3.harp")
+
+# Read data from a specific register
+timer_df = device.Timer.read()
+
+# Inspect DataFrame
+print(timer_df.head())
+
+# Plot the counter value against the hardware timestamp
+timer_df.plot()
+plt.show()
+```
+
+[!INCLUDE [](version-footer.md)]
+
+<!--Reference Style Links -->
+[`DeviceDataWriter`]: xref:Harp.TimestampGeneratorGen3.DeviceDataWriter
+[`Device`]: xref:Harp.TimestampGeneratorGen3.Device
