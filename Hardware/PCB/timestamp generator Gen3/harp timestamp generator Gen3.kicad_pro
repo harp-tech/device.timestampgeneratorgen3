@@ -76,7 +76,24 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "hole_clearance|196189338|70846790|6e0b00c2-1aae-464b-aa42-a1463a225884|5763b0ef-cbfa-4102-8c8d-37d277af2f45",
+          ""
+        ],
+        [
+          "hole_clearance|196189338|70846790|8d82e2af-f59d-4715-ad03-c7cfd5a7eb0e|5763b0ef-cbfa-4102-8c8d-37d277af2f45",
+          ""
+        ],
+        [
+          "hole_clearance|202289338|70846790|393eef01-8754-412c-84bd-1a674f75b0a0|7b2c78b0-c8b6-4178-b8e4-1a3dbcd7529c",
+          ""
+        ],
+        [
+          "hole_clearance|202289338|70846790|ee8dd94d-2871-45a3-8e86-c667cb1158cd|7b2c78b0-c8b6-4178-b8e4-1a3dbcd7529c",
+          ""
+        ]
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
