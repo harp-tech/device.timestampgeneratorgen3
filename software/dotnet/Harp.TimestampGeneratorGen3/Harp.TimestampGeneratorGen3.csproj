@@ -30,7 +30,7 @@
   <ItemGroup>
     <Content Include="..\LICENSE" PackagePath="/" />
     <Content Include="..\icon.png" PackagePath="/" />
-    <EmbeddedResource Include="..\..\device.yml" />
+    <EmbeddedResource Include="..\..\..\device.yml" />
   </ItemGroup>
 
 </Project>

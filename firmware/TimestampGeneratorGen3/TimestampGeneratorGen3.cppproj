@@ -76,6 +76,7 @@
         <avrgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.1.68\include</Value>
+            <Value>..\core</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
         <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -92,6 +93,7 @@
         <avrgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.1.68\include</Value>
+            <Value>..\core</Value>
           </ListValues>
         </avrgcccpp.compiler.directories.IncludePaths>
         <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
@@ -101,11 +103,12 @@
         <avrgcccpp.linker.libraries.Libraries>
           <ListValues>
             <Value>libm</Value>
-            <Value>libATxmega16A4U_ClockSync-1.10.a</Value>
+            <Value>libATxmega16A4U_ClockSync-1.15.a</Value>
           </ListValues>
         </avrgcccpp.linker.libraries.Libraries>
         <avrgcccpp.linker.libraries.LibrarySearchPaths>
           <ListValues>
+            <Value>..\core</Value>
           </ListValues>
         </avrgcccpp.linker.libraries.LibrarySearchPaths>
         <avrgcccpp.assembler.general.IncludePaths>
@@ -135,6 +138,7 @@
         <avrgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.1.68\include</Value>
+            <Value>..\core</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
         <avrgcc.compiler.optimization.level>Optimize most (-O3)</avrgcc.compiler.optimization.level>
@@ -152,6 +156,7 @@
         <avrgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.1.68\include</Value>
+            <Value>..\core</Value>
           </ListValues>
         </avrgcccpp.compiler.directories.IncludePaths>
         <avrgcccpp.compiler.optimization.level>Optimize most (-O3)</avrgcccpp.compiler.optimization.level>
@@ -167,7 +172,7 @@
         </avrgcccpp.linker.libraries.Libraries>
         <avrgcccpp.linker.libraries.LibrarySearchPaths>
           <ListValues>
-            <Value>..</Value>
+            <Value>..\core</Value>
           </ListValues>
         </avrgcccpp.linker.libraries.LibrarySearchPaths>
         <avrgcccpp.assembler.general.IncludePaths>
