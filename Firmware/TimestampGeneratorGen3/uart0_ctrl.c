@@ -1,7 +1,4 @@
-#include <avr/io.h>
-#include <stdbool.h>
-#include <stdint.h>
-#include "cpu.h"
+#include "uart0_ctrl.h"
 
 static uint8_t saved_ctrla;
 static uint8_t saved_ctrlb;

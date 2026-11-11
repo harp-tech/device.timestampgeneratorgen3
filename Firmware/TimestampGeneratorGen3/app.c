@@ -2,6 +2,8 @@
 #include "hwbp_core_regs.h"
 #include "hwbp_core_types.h"
 
+#include "uart0_ctrl.h"
+
 #include "app.h"
 #include "app_funcs.h"
 #include "app_ios_and_regs.h"
