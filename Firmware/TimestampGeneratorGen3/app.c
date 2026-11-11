@@ -140,8 +140,8 @@ void core_callback_reset_registers(void)
 	/* Initialize registers */
 	app_regs.REG_BATTERY_RATE = MSK_EACH_60SECONDS;
 	
-	app_regs.REG_BATTERY_TH_HIGH = 3.75;
-	app_regs.REG_BATTERY_TH_LOW = 3.65;
+	app_regs.REG_BATTERY_TH_HIGH = 3.80;
+	app_regs.REG_BATTERY_TH_LOW = 3.70;
 }
 
 void core_callback_registers_were_reinitialized(void)
@@ -212,8 +212,8 @@ uint16_t battery_indication_ms = 0;
 #define BATTERY_INDICATION_BLINK_MS 200
 
 #define BATTERY_CHARGED_TH 4.1
-#define BATTERY_DISCHARGED_TH 3.35
-#define BATTERY_DISCHARGED_DEPLETED 3.25
+#define BATTERY_DISCHARGED_TH 3.6
+#define BATTERY_DISCHARGED_DEPLETED 3.4	// Used when the device don't have the 3.5V shutdown threshold by hardware.
 
 extern uint8_t battery_mode;
 extern uint8_t battery_cycle_state;
