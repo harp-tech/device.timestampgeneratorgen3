@@ -232,6 +232,9 @@ void core_callback_t_before_exec(void)
 	}
 }
 void core_callback_t_after_exec(void) {}
+
+uint8_t prev_power_good = 0;
+
 void core_callback_t_new_second(void)
 {	
 	if (counter >= 4000)
@@ -239,6 +242,17 @@ void core_callback_t_new_second(void)
 	
 	set_BAT_READ;
 	read_battery = true;
+	
+	// These will remove voltage from pin TXD0 PC3 and 
+	if ((read_POWER_GOOD == 0) && (prev_power_good == 1))
+	{
+		uart0_restore();
+	}
+	if ((read_POWER_GOOD != 0) && (prev_power_good == 0))
+	{
+		uart0_disable_and_tx_to_low();
+	}
+	
 	
 	timer_counter = 0;
 }
