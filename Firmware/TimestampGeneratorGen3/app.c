@@ -245,14 +245,16 @@ void core_callback_t_new_second(void)
 	set_BAT_READ;
 	read_battery = true;
 	
-	// These will remove voltage from pin TXD0 PC3 and 
+	// These will remove voltage from pin TXD0 PE3 and 
 	if ((read_POWER_GOOD == 0) && (prev_power_good == 1))
 	{
 		uart0_restore();
+		prev_power_good = 0;
 	}
 	if ((read_POWER_GOOD != 0) && (prev_power_good == 0))
 	{
 		uart0_disable_and_tx_to_low();
+		prev_power_good = 1;
 	}
 	
 	
