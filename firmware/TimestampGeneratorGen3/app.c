@@ -138,16 +138,16 @@ void core_callback_initialize_hardware(void)
 void core_callback_reset_registers(void)
 {
 	/* Initialize registers */
-	app_regs.REG_BATTERY_RATE = MSK_EACH_60SECONDS;
+	app_regs.REG_BATTERY_RATE = GM_BATTERY_RATE_CONFIGURATION_EVERY_MINUTE;
 	
-	app_regs.REG_BATTERY_TH_HIGH = 3.80;
-	app_regs.REG_BATTERY_TH_LOW = 3.70;
+	app_regs.REG_BATTERY_THRESHOLD_HIGH = 3.80;
+	app_regs.REG_BATTERY_THRESHOLD_LOW = 3.70;
 }
 
 void core_callback_registers_were_reinitialized(void)
 {
 	/* Update registers if needed */
-	app_regs.REG_CONFIG = B_STOPS_ANY;
+	app_regs.REG_CONFIG = B_STOP;
 	app_write_REG_CONFIG(&app_regs.REG_CONFIG);
 }
 
@@ -223,11 +223,11 @@ void core_callback_t_before_exec(void)
 {
 	timer_counter++;
 	
-	if ((app_regs.REG_TIMER_FREQUENCY == MSK_TIMER_1000HZ && ((timer_counter & 1) == 0)) ||
-		(app_regs.REG_TIMER_FREQUENCY == MSK_TIMER_500HZ && ((timer_counter & 3) == 0)) ||
-		(app_regs.REG_TIMER_FREQUENCY == MSK_TIMER_200HZ && ((timer_counter % 10) == 0)) ||
-		(app_regs.REG_TIMER_FREQUENCY == MSK_TIMER_100HZ && ((timer_counter % 20) == 0)) ||
-		(app_regs.REG_TIMER_FREQUENCY == MSK_TIMER_50HZ && ((timer_counter % 40) == 0)))
+	if ((app_regs.REG_TIMER_FREQUENCY == GM_TIMER_RATE_TIMER1000_HZ && ((timer_counter & 1) == 0)) ||
+		(app_regs.REG_TIMER_FREQUENCY == GM_TIMER_RATE_TIMER500_HZ && ((timer_counter & 3) == 0)) ||
+		(app_regs.REG_TIMER_FREQUENCY == GM_TIMER_RATE_TIMER200_HZ && ((timer_counter % 10) == 0)) ||
+		(app_regs.REG_TIMER_FREQUENCY == GM_TIMER_RATE_TIMER100_HZ && ((timer_counter % 20) == 0)) ||
+		(app_regs.REG_TIMER_FREQUENCY == GM_TIMER_RATE_TIMER50_HZ && ((timer_counter % 40) == 0)))
 	{
 		core_func_send_event(ADD_REG_TIMER, true);
 		app_regs.REG_TIMER++;
@@ -554,12 +554,12 @@ void core_callback_t_1ms(void)
 
 		switch (app_regs.REG_BATTERY_RATE)
 		{
-			case MSK_EACH_SECOND:
+			case GM_BATTERY_RATE_CONFIGURATION_EVERY_SECOND:
 				battery_counter = 0;
 				if (battery_ready)
 					core_func_send_event(ADD_REG_BATTERY, true);
 				break;
-			case MSK_EACH_10SECONDS:
+			case GM_BATTERY_RATE_CONFIGURATION_EVERY10_SECONDS:
 				if (++battery_counter == 10)
 				{
 					battery_counter = 0;
@@ -567,7 +567,7 @@ void core_callback_t_1ms(void)
 						core_func_send_event(ADD_REG_BATTERY, true);
 				}
 				break;
-			case MSK_EACH_60SECONDS:
+			case GM_BATTERY_RATE_CONFIGURATION_EVERY_MINUTE:
 				if (++battery_counter == 60)
 				{
 					battery_counter = 0;
@@ -602,12 +602,12 @@ void batery_state_machine(void)
 	/* Typical behavior */
 	if (battery_mode == 0)
 	{	
-		if (app_regs.REG_BATTERY <= app_regs.REG_BATTERY_TH_LOW || app_regs.REG_BATTERY <= BATTERY_DISCHARGED_TH)
+		if (app_regs.REG_BATTERY <= app_regs.REG_BATTERY_THRESHOLD_LOW || app_regs.REG_BATTERY <= BATTERY_DISCHARGED_TH)
 		{
 			set_EN_CHARGE;
 			clr_EN_DISCHARGE;			
 		}
-		if (app_regs.REG_BATTERY >= app_regs.REG_BATTERY_TH_HIGH || app_regs.REG_BATTERY >= BATTERY_CHARGED_TH)
+		if (app_regs.REG_BATTERY >= app_regs.REG_BATTERY_THRESHOLD_HIGH || app_regs.REG_BATTERY >= BATTERY_CHARGED_TH)
 		{
 			clr_EN_CHARGE;
 			clr_EN_DISCHARGE;
@@ -641,7 +641,7 @@ void batery_state_machine(void)
 		
 		if (battery_cycle_state == 2)
 		{
-			if (app_regs.REG_BATTERY <= app_regs.REG_BATTERY_TH_HIGH)
+			if (app_regs.REG_BATTERY <= app_regs.REG_BATTERY_THRESHOLD_HIGH)
 			{
 				battery_mode = 0;				
 				clr_EN_CHARGE;

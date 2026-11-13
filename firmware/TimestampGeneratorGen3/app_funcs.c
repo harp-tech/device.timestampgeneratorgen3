@@ -14,8 +14,8 @@ void (*app_func_rd_pointer[])(void) = {
 	&app_read_REG_REPEATER_STATUS,
 	&app_read_REG_BATTERY_RATE,
 	&app_read_REG_BATTERY,
-	&app_read_REG_BATTERY_TH_LOW,
-	&app_read_REG_BATTERY_TH_HIGH,
+	&app_read_REG_BATTERY_THRESHOLD_LOW,
+	&app_read_REG_BATTERY_THRESHOLD_HIGH,
 	&app_read_REG_BATTERY_CALIBRATION0,
 	&app_read_REG_BATTERY_CALIBRATION1,
 	&app_read_REG_TIMER,
@@ -28,8 +28,8 @@ bool (*app_func_wr_pointer[])(void*) = {
 	&app_write_REG_REPEATER_STATUS,
 	&app_write_REG_BATTERY_RATE,
 	&app_write_REG_BATTERY,
-	&app_write_REG_BATTERY_TH_LOW,
-	&app_write_REG_BATTERY_TH_HIGH,
+	&app_write_REG_BATTERY_THRESHOLD_LOW,
+	&app_write_REG_BATTERY_THRESHOLD_HIGH,
 	&app_write_REG_BATTERY_CALIBRATION0,
 	&app_write_REG_BATTERY_CALIBRATION1,
 	&app_write_REG_TIMER,
@@ -63,7 +63,7 @@ bool app_write_REG_CONFIG(void *a)
 	if (reg & B_START_DISCHARGE) {battery_mode = B_START_DISCHARGE;}
 	if (reg & B_START_CHARGE) { battery_mode = B_START_CHARGE; }
 		
-	if (reg & B_STOPS_ANY)
+	if (reg & B_STOP)
 	{
 		clr_EN_CHARGE;
 		clr_EN_DISCHARGE;
@@ -83,12 +83,12 @@ void app_read_REG_DEVICES_CONNECTED(void)
 {
 	app_regs.REG_DEVICES_CONNECTED = 0;
 	
-	if (read_DEVICE_AT_0) app_regs.REG_DEVICES_CONNECTED |= B_PORT0;
-	if (read_DEVICE_AT_1) app_regs.REG_DEVICES_CONNECTED |= B_PORT1;
-	if (read_DEVICE_AT_2) app_regs.REG_DEVICES_CONNECTED |= B_PORT2;
-	if (read_DEVICE_AT_3) app_regs.REG_DEVICES_CONNECTED |= B_PORT3;
-	if (read_DEVICE_AT_4) app_regs.REG_DEVICES_CONNECTED |= B_PORT4;
-	if (read_DEVICE_AT_5) app_regs.REG_DEVICES_CONNECTED |= B_PORT5;
+	if (read_DEVICE_AT_0) app_regs.REG_DEVICES_CONNECTED |= B_OUT0;
+	if (read_DEVICE_AT_1) app_regs.REG_DEVICES_CONNECTED |= B_OUT1;
+	if (read_DEVICE_AT_2) app_regs.REG_DEVICES_CONNECTED |= B_OUT2;
+	if (read_DEVICE_AT_3) app_regs.REG_DEVICES_CONNECTED |= B_OUT3;
+	if (read_DEVICE_AT_4) app_regs.REG_DEVICES_CONNECTED |= B_OUT4;
+	if (read_DEVICE_AT_5) app_regs.REG_DEVICES_CONNECTED |= B_OUT5;
 }
 
 bool app_write_REG_DEVICES_CONNECTED(void *a)
@@ -126,7 +126,7 @@ bool app_write_REG_BATTERY_RATE(void *a)
 {
 	uint8_t reg = *((uint8_t*)a);
 	
-	if (reg & ~GM_BATTERY_RATE) return false;
+	if (reg & ~MSK_BATTERY_RATE_CONFIGURATION) return false;
 
 	app_regs.REG_BATTERY_RATE = reg;
 	return true;
@@ -152,37 +152,37 @@ bool app_write_REG_BATTERY(void *a)
 
 
 /************************************************************************/
-/* REG_BATTERY_TH_LOW                                                   */
+/* REG_BATTERY_THRESHOLD_LOW                                                   */
 /************************************************************************/
-void app_read_REG_BATTERY_TH_LOW(void)
+void app_read_REG_BATTERY_THRESHOLD_LOW(void)
 {
-	//app_regs.REG_BATTERY_TH_LOW = 0;
+	//app_regs.REG_BATTERY_THRESHOLD_LOW = 0;
 
 }
 
-bool app_write_REG_BATTERY_TH_LOW(void *a)
+bool app_write_REG_BATTERY_THRESHOLD_LOW(void *a)
 {
 	float reg = *((float*)a);
 
-	app_regs.REG_BATTERY_TH_LOW = reg;
+	app_regs.REG_BATTERY_THRESHOLD_LOW = reg;
 	return true;
 }
 
 
 /************************************************************************/
-/* REG_BATTERY_TH_HIGH                                                  */
+/* REG_BATTERY_THRESHOLD_HIGH                                                  */
 /************************************************************************/
-void app_read_REG_BATTERY_TH_HIGH(void)
+void app_read_REG_BATTERY_THRESHOLD_HIGH(void)
 {
-	//app_regs.REG_BATTERY_TH_HIGH = 0;
+	//app_regs.REG_BATTERY_THRESHOLD_HIGH = 0;
 
 }
 
-bool app_write_REG_BATTERY_TH_HIGH(void *a)
+bool app_write_REG_BATTERY_THRESHOLD_HIGH(void *a)
 {
 	float reg = *((float*)a);
 
-	app_regs.REG_BATTERY_TH_HIGH = reg;
+	app_regs.REG_BATTERY_THRESHOLD_HIGH = reg;
 	return true;
 }
 
@@ -244,7 +244,7 @@ bool app_write_REG_TIMER_FREQUENCY(void *a)
 {
 	uint8_t reg = *((uint8_t*)a);
 	
-	if (reg & (~GM_TIMER_FREQUENCY))
+	if (reg & (~MSK_TIMER_RATE))
 		return false;
 	
 	app_regs.REG_TIMER_FREQUENCY = reg;

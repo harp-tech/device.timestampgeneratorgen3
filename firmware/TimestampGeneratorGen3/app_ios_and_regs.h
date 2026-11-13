@@ -6,43 +6,43 @@ void init_ios(void);
 /************************************************************************/
 /* Definition of input pins                                             */
 /************************************************************************/
-// DEVICE_AT_4            Description: Device is connected to CLKOUT4
-// DEVICE_AT_5            Description: Device is connected to CLKOUT5
-// DEVICE_AT_2            Description: Device is connected to CLKOUT2
-// POWER_GOOD             Description: Detects the presence of the USB power
-// BUTTON                 Description: User's input button
-// DEVICE_AT_0            Description: Device is connected to CLKOUT0
-// DEVICE_AT_1            Description: Device is connected to CLKOUT1
-// DEVICE_AT_3            Description: Device is connected to CLKOUT3
+// DEVICE_AT_4                  Description: Device is connected to CLKOUT4
+// DEVICE_AT_5                  Description: Device is connected to CLKOUT5
+// DEVICE_AT_2                  Description: Device is connected to CLKOUT2
+// POWER_GOOD                   Description: Detects the presence of the USB power
+// BUTTON                       Description: User's input button
+// DEVICE_AT_0                  Description: Device is connected to CLKOUT0
+// DEVICE_AT_1                  Description: Device is connected to CLKOUT1
+// DEVICE_AT_3                  Description: Device is connected to CLKOUT3
 
-#define read_DEVICE_AT_4 read_io(PORTA, 2)      // DEVICE_AT_4
-#define read_DEVICE_AT_5 read_io(PORTA, 3)      // DEVICE_AT_5
-#define read_DEVICE_AT_2 read_io(PORTA, 4)      // DEVICE_AT_2
-#define read_POWER_GOOD read_io(PORTB, 0)       // POWER_GOOD
-#define read_BUTTON read_io(PORTB, 3)           // BUTTON
-#define read_DEVICE_AT_0 read_io(PORTC, 6)      // DEVICE_AT_0
-#define read_DEVICE_AT_1 read_io(PORTC, 7)      // DEVICE_AT_1
-#define read_DEVICE_AT_3 read_io(PORTR, 0)      // DEVICE_AT_3
+#define read_DEVICE_AT_4 read_io(PORTA, 2)            // DEVICE_AT_4
+#define read_DEVICE_AT_5 read_io(PORTA, 3)            // DEVICE_AT_5
+#define read_DEVICE_AT_2 read_io(PORTA, 4)            // DEVICE_AT_2
+#define read_POWER_GOOD read_io(PORTB, 0)             // POWER_GOOD
+#define read_BUTTON read_io(PORTB, 3)                 // BUTTON
+#define read_DEVICE_AT_0 read_io(PORTC, 6)            // DEVICE_AT_0
+#define read_DEVICE_AT_1 read_io(PORTC, 7)            // DEVICE_AT_1
+#define read_DEVICE_AT_3 read_io(PORTR, 0)            // DEVICE_AT_3
 
 /************************************************************************/
 /* Definition of output pins                                            */
 /************************************************************************/
-// BAT_READ               Description: 
-// EN_SCREEN_BACKLIGHT    Description: 
-// LED_CLK_4              Description: 
-// LED_CLK_1              Description: 
-// EN_CHARGE              Description: 
-// EN_DISCHARGE           Description: 
-// LED_CLK_0              Description: 
-// LED_CLK_3              Description: 
-// LED_CLK_2              Description: 
-// LED_CLK_5              Description: 
-// LED_POWER              Description: 
-// EN_CLOCK_OUT           Description: 
-// EN_CLOCK_IN            Description: 
-// LED_REPEATER           Description: 
-// LED_LOCK               Description: 
-// LED_STATE              Description: 
+// BAT_READ                     Description:
+// EN_SCREEN_BACKLIGHT          Description:
+// LED_CLK_4                    Description:
+// LED_CLK_1                    Description:
+// EN_CHARGE                    Description:
+// EN_DISCHARGE                 Description:
+// LED_CLK_0                    Description:
+// LED_CLK_3                    Description:
+// LED_CLK_2                    Description:
+// LED_CLK_5                    Description:
+// LED_POWER                    Description:
+// EN_CLOCK_OUT                 Description:
+// EN_CLOCK_IN                  Description:
+// LED_REPEATER                 Description:
+// LED_LOCK                     Description:
+// LED_STATE                    Description:
 
 /* BAT_READ */
 #define set_BAT_READ set_io(PORTA, 1)
@@ -140,43 +140,42 @@ void init_ios(void);
 #define tgl_LED_STATE toggle_io(PORTD, 5)
 #define read_LED_STATE read_io(PORTD, 5)
 
-
 /************************************************************************/
 /* Registers' structure                                                 */
 /************************************************************************/
 typedef struct
 {
-	uint8_t REG_CONFIG;
-	uint8_t REG_DEVICES_CONNECTED;
-	uint8_t REG_REPEATER_STATUS;
-	uint8_t REG_BATTERY_RATE;
-	float REG_BATTERY;
-	float REG_BATTERY_TH_LOW;
-	float REG_BATTERY_TH_HIGH;
-	uint16_t REG_BATTERY_CALIBRATION0;
-	uint16_t REG_BATTERY_CALIBRATION1;
-	uint32_t REG_TIMER;
-	uint8_t REG_TIMER_FREQUENCY;
+    uint8_t REG_CONFIG;
+    uint8_t REG_DEVICES_CONNECTED;
+    uint8_t REG_REPEATER_STATUS;
+    uint8_t REG_BATTERY_RATE;
+    float REG_BATTERY;
+    float REG_BATTERY_THRESHOLD_LOW;
+    float REG_BATTERY_THRESHOLD_HIGH;
+    uint16_t REG_BATTERY_CALIBRATION0;
+    uint16_t REG_BATTERY_CALIBRATION1;
+    uint32_t REG_TIMER;
+    uint8_t REG_TIMER_FREQUENCY;
 } AppRegs;
 
 /************************************************************************/
 /* Registers' address                                                   */
 /************************************************************************/
 /* Registers */
-#define ADD_REG_CONFIG                      32 // U8     Device's configuration
-#define ADD_REG_DEVICES_CONNECTED           33 // U8     Reads if the port has a device connected to (bitmask)
-#define ADD_REG_REPEATER_STATUS             34 // U8     Check if device is a repeater or spreading internal timestamp
-#define ADD_REG_BATTERY_RATE                35 // U8     Configure how oftne the battery calue is sent to computer
-#define ADD_REG_BATTERY                     36 // FLOAT  Reads the current battery charge
-#define ADD_REG_BATTERY_TH_LOW              37 // FLOAT  Sets the low threshold from where the battery should start to be charged
-#define ADD_REG_BATTERY_TH_HIGH             38 // FLOAT  Sets the high threshold from where the battery stops to be charged
-#define ADD_REG_BATTERY_CALIBRATION0        39 // U16    Not used
-#define ADD_REG_BATTERY_CALIBRATION1        40 // U16    Not used
-#define ADD_REG_TIMER                       41 // U32    Unitary counter that periodically produces a value at frequency defined by TIMER_FREQUENCY
-#define ADD_REG_TIMER_FREQUENCY             42 // U8     Frequency to produce subsequent values
+#define ADD_REG_CONFIG                    32 // U8     Specifies the device configuration
+#define ADD_REG_DEVICES_CONNECTED         33 // U8     Specifies which CLK_OUT ports have devices connected.
+#define ADD_REG_REPEATER_STATUS           34 // U8     Check whether device is a repeater or spreading internal timestamp
+#define ADD_REG_BATTERY_RATE              35 // U8     Configure how often the battery value is sent to computer
+#define ADD_REG_BATTERY                   36 // FLOAT  Reads the current battery charge
+#define ADD_REG_BATTERY_THRESHOLD_LOW     37 // FLOAT  Specifies the low threshold from where the battery should start to be charged
+#define ADD_REG_BATTERY_THRESHOLD_HIGH    38 // FLOAT  Specifies the high threshold from where the battery stops being charged
+#define ADD_REG_BATTERY_CALIBRATION0      39 // U16
+#define ADD_REG_BATTERY_CALIBRATION1      40 // U16
+#define ADD_REG_TIMER                     41 // U32    Unitary counter that periodically produces a value at the frequency defined by register TimerFrequency.
+#define ADD_REG_TIMER_FREQUENCY           42 // U8     Frequency at which the Timer will generate new values.
 
 /************************************************************************/
-/* PWM Generator registers' memory limits                               */
+/* TimestampGeneratorGen3 registers' memory limits                      */
 /*                                                                      */
 /* DON'T change the APP_REGS_ADD_MIN value !!!                          */
 /* DON'T change these names !!!                                         */
@@ -189,28 +188,28 @@ typedef struct
 /************************************************************************/
 /* Registers' bits                                                      */
 /************************************************************************/
-#define B_START_BATTERY_CYCLE              (1<<0)       // Starts battery cycle to extend batteries life
-#define B_START_DISCHARGE                  (1<<1)       // Starts to discharge right away
-#define B_START_CHARGE                     (1<<2)       // Starts to charge right away
-#define B_STOPS_ANY                        (1<<3)       // Stop any control of the battery and get back to normal function
-#define B_PORT0                            (1<<0)       // 
-#define B_PORT1                            (1<<1)       // 
-#define B_PORT2                            (1<<2)       // 
-#define B_PORT3                            (1<<3)       // 
-#define B_PORT4                            (1<<4)       // 
-#define B_PORT5                            (1<<5)       // 
-#define B_REPEATER                         (1<<0)       // Device is a repeater
-#define GM_BATTERY_RATE                    3            // Configures the rate at which the battery charge is sent
-#define MSK_EACH_60SECONDS                 0            // Sent each minute
-#define MSK_EACH_10SECONDS                 1            // Sent each 10 second
-#define MSK_EACH_SECOND                    2            // Sent each second
-#define MSK_NEVER                          3            // Not sent
-#define GM_TIMER_FREQUENCY                 7            // Configures the rate at which the counter is sent
-#define MSK_TIMER_OFF                      0            // Timer is off
-#define MSK_TIMER_50HZ                     1            // Counter sent at 50 Hz
-#define MSK_TIMER_100HZ                    2            // Counter sent at 100 Hz
-#define MSK_TIMER_200HZ                    3            // Counter sent at 200 Hz
-#define MSK_TIMER_500HZ                    4            // Counter sent at 500 Hz
-#define MSK_TIMER_1000HZ                   5            // Counter sent at 1000 Hz
+#define B_START_BATTERY_CYCLE                            (1<<0)       // Starts battery cycle to extend batteries life.
+#define B_START_DISCHARGE                                (1<<1)       // Starts to discharge right away.
+#define B_START_CHARGE                                   (1<<2)       // Starts to charge right away.
+#define B_STOP                                           (1<<3)       // Stop any control of the battery and resume normal function.
+#define B_OUT0                                           (1<<0)       //
+#define B_OUT1                                           (1<<1)       //
+#define B_OUT2                                           (1<<2)       //
+#define B_OUT3                                           (1<<3)       //
+#define B_OUT4                                           (1<<4)       //
+#define B_OUT5                                           (1<<5)       //
+#define B_REPEATER                                       (1<<0)       //
+#define MSK_BATTERY_RATE_CONFIGURATION                   0x03         //
+#define GM_BATTERY_RATE_CONFIGURATION_EVERY_MINUTE       0x00         //
+#define GM_BATTERY_RATE_CONFIGURATION_EVERY10_SECONDS    0x01         //
+#define GM_BATTERY_RATE_CONFIGURATION_EVERY_SECOND       0x02         //
+#define GM_BATTERY_RATE_CONFIGURATION_NEVER              0x03         //
+#define MSK_TIMER_RATE                                   0x07         //
+#define GM_TIMER_RATE_DISABLED                           0x00         //
+#define GM_TIMER_RATE_TIMER50_HZ                         0x01         //
+#define GM_TIMER_RATE_TIMER100_HZ                        0x02         //
+#define GM_TIMER_RATE_TIMER200_HZ                        0x03         //
+#define GM_TIMER_RATE_TIMER500_HZ                        0x04         //
+#define GM_TIMER_RATE_TIMER1000_HZ                       0x05         //
 
 #endif /* _APP_REGS_H_ */

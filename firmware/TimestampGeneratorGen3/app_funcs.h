@@ -7,13 +7,13 @@
 /* Define if not defined                                                */
 /************************************************************************/
 #ifndef bool
-	#define bool uint8_t
+    #define bool uint8_t
 #endif
 #ifndef true
-	#define true 1
+    #define true 1
 #endif
 #ifndef false
-	#define false 0
+    #define false 0
 #endif
 
 
@@ -25,8 +25,8 @@ void app_read_REG_DEVICES_CONNECTED(void);
 void app_read_REG_REPEATER_STATUS(void);
 void app_read_REG_BATTERY_RATE(void);
 void app_read_REG_BATTERY(void);
-void app_read_REG_BATTERY_TH_LOW(void);
-void app_read_REG_BATTERY_TH_HIGH(void);
+void app_read_REG_BATTERY_THRESHOLD_LOW(void);
+void app_read_REG_BATTERY_THRESHOLD_HIGH(void);
 void app_read_REG_BATTERY_CALIBRATION0(void);
 void app_read_REG_BATTERY_CALIBRATION1(void);
 void app_read_REG_TIMER(void);
@@ -37,8 +37,8 @@ bool app_write_REG_DEVICES_CONNECTED(void *a);
 bool app_write_REG_REPEATER_STATUS(void *a);
 bool app_write_REG_BATTERY_RATE(void *a);
 bool app_write_REG_BATTERY(void *a);
-bool app_write_REG_BATTERY_TH_LOW(void *a);
-bool app_write_REG_BATTERY_TH_HIGH(void *a);
+bool app_write_REG_BATTERY_THRESHOLD_LOW(void *a);
+bool app_write_REG_BATTERY_THRESHOLD_HIGH(void *a);
 bool app_write_REG_BATTERY_CALIBRATION0(void *a);
 bool app_write_REG_BATTERY_CALIBRATION1(void *a);
 bool app_write_REG_TIMER(void *a);
