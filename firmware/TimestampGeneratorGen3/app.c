@@ -194,7 +194,7 @@ bool battery_ready = false;
 #define BUTTON_USER_BAT_LEVEL_MS 500
 #define BUTTON_USER_LOCK_UNLOCK_MS 2500
 #define BUTTON_USER_GEN_REPEATER_MS 5500
-#define BUTTON_USER_START_BATTERY_CYCLE_MS 15000
+#define BUTTON_USER_START_BATTERY_CYCLE_MS 12000
 
 uint16_t button_pressed_ms = 0;
 uint8_t button_blink_counter = 0;
@@ -397,9 +397,14 @@ void core_callback_t_1ms(void)
             {
                 // Toggle battery cycle
                 if (battery_mode & B_START_BATTERY_CYCLE)
+                {
                     battery_mode = 0;
+                }
                 else
+                {
                     battery_mode = B_START_BATTERY_CYCLE;
+                    battery_cycle_state = 0;
+                }
             }
         }
 
