@@ -86,30 +86,64 @@ bitMasks:
   ConnectedDevices:
     description: Specifies if an output port has a device connected.
     bits:
-      Out0: 0x01
-      Out1: 0x02
-      Out2: 0x04
-      Out3: 0x08
-      Out4: 0x10
-      Out5: 0x20
+      Out0:
+        value: 0x01
+        description: A device is connected to clock output 0.
+      Out1:
+        value: 0x02
+        description: A device is connected to clock output 1.
+      Out2:
+        value: 0x04
+        description: A device is connected to clock output 2.
+      Out3:
+        value: 0x08
+        description: A device is connected to clock output 3.
+      Out4:
+        value: 0x10
+        description: A device is connected to clock output 4.
+      Out5:
+        value: 0x20
+        description: A device is connected to clock output 5.
   RepeaterFlags:
     description: Specifies whether the device is a clock repeater.
     bits:
-      Repeater: 0x01
+      Repeater:
+        value: 0x01
+        description: The device is a clock repeater.
 groupMasks:
   BatteryRateConfiguration:
     description: Specifies the rate at which the battery charge event is sent.
     values:
-      EveryMinute: 0
-      Every10Seconds: 1
-      EverySecond: 2
-      Never: 3
+      EveryMinute:
+        value: 0
+        description: The battery charge is sent every minute.
+      Every10Seconds:
+        value: 1
+        description: The battery charge is sent every 10 seconds.
+      EverySecond:
+        value: 2
+        description: The battery charge is sent every second.
+      Never:
+        value: 3
+        description: The battery charge is not sent.
   TimerRate:
     description: Specifies the rate at which the timer counter is sent.
     values:
-      Disabled: 0
-      Timer50Hz: 1
-      Timer100Hz: 2
-      Timer200Hz: 3
-      Timer500Hz: 4
-      Timer1000Hz: 5
+      Disabled:
+        value: 0
+        description: The timer counter is not sent.
+      Timer50Hz:
+        value: 1
+        description: The timer counter is sent at 50 Hz.
+      Timer100Hz:
+        value: 2
+        description: The timer counter is sent at 100 Hz.
+      Timer200Hz:
+        value: 3
+        description: The timer counter is sent at 200 Hz.
+      Timer500Hz:
+        value: 4
+        description: The timer counter is sent at 500 Hz.
+      Timer1000Hz:
+        value: 5
+        description: The timer counter is sent at 1000 Hz.

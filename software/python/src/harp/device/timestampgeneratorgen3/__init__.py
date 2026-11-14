@@ -65,37 +65,67 @@ class ConnectedDevices(enum.IntFlag):
     """Specifies if an output port has a device connected."""
 
     OUT0 = 0x1
+    """A device is connected to clock output 0."""
+
     OUT1 = 0x2
+    """A device is connected to clock output 1."""
+
     OUT2 = 0x4
+    """A device is connected to clock output 2."""
+
     OUT3 = 0x8
+    """A device is connected to clock output 3."""
+
     OUT4 = 0x10
+    """A device is connected to clock output 4."""
+
     OUT5 = 0x20
+    """A device is connected to clock output 5."""
 
 
 class RepeaterFlags(enum.IntFlag):
     """Specifies whether the device is a clock repeater."""
 
     REPEATER = 0x1
+    """The device is a clock repeater."""
 
 
 class BatteryRateConfiguration(enum.IntEnum):
     """Specifies the rate at which the battery charge event is sent."""
 
     EVERY_MINUTE = 0
+    """The battery charge is sent every minute."""
+
     EVERY10_SECONDS = 1
+    """The battery charge is sent every 10 seconds."""
+
     EVERY_SECOND = 2
+    """The battery charge is sent every second."""
+
     NEVER = 3
+    """The battery charge is not sent."""
 
 
 class TimerRate(enum.IntEnum):
     """Specifies the rate at which the timer counter is sent."""
 
     DISABLED = 0
+    """The timer counter is not sent."""
+
     TIMER50_HZ = 1
+    """The timer counter is sent at 50 Hz."""
+
     TIMER100_HZ = 2
+    """The timer counter is sent at 100 Hz."""
+
     TIMER200_HZ = 3
+    """The timer counter is sent at 200 Hz."""
+
     TIMER500_HZ = 4
+    """The timer counter is sent at 500 Hz."""
+
     TIMER1000_HZ = 5
+    """The timer counter is sent at 1000 Hz."""
 
 
 class ConfigPayload(AnonymousPayload[np.uint8]):
