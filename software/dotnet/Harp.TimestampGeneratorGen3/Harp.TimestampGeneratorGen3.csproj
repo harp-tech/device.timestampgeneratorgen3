@@ -1,36 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>Harp - TimestampGenerator Gen3</Title>
-    <Authors>harp-tech</Authors>
-    <Copyright>Copyright © harp-tech and Contributors 2023</Copyright>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
-    <Description>Bonsai Library containing interfaces for data acquisition and control of Harp TimestampGenerator Gen3 devices.</Description>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageType>Dependency;BonsaiLibrary</PackageType>
-    <PackageTags>Harp TimestampGenerator Gen3 Bonsai Rx</PackageTags>
-    <PackageProjectUrl>https://harp-tech.org</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/harp-tech/device.timestampgeneratorgen3.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageOutputPath>..\bin\$(Configuration)</PackageOutputPath>
-    <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
-    <VersionPrefix>0.2.0</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
-    <LangVersion>9.0</LangVersion>
+    <Description>Bonsai Library containing interfaces for data acquisition and control of Harp Timestamp Generator Gen3 devices.</Description>
+    <PackageTags>$(PackageTags) Bonsai Rx</PackageTags>
+    <TargetFrameworks>net472;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bonsai.Harp" Version="3.5.0" />
+    <PackageReference Include="Bonsai.Harp" Version="3.6.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\LICENSE" PackagePath="/" />
-    <Content Include="..\icon.png" PackagePath="/" />
-    <EmbeddedResource Include="..\..\..\device.yml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)..\..\..\device.yml" />
   </ItemGroup>
 
 </Project>
