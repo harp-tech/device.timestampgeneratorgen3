@@ -1841,12 +1841,45 @@ namespace Harp.TimestampGeneratorGen3
     [Flags]
     public enum ConnectedDevices : byte
     {
+        /// <summary>
+        /// Specifies that no flags are set.
+        /// </summary>
         None = 0x0,
+
+        /// <summary>
+        /// A device is connected to clock output 0.
+        /// </summary>
+        [Description("A device is connected to clock output 0.")]
         Out0 = 0x1,
+
+        /// <summary>
+        /// A device is connected to clock output 1.
+        /// </summary>
+        [Description("A device is connected to clock output 1.")]
         Out1 = 0x2,
+
+        /// <summary>
+        /// A device is connected to clock output 2.
+        /// </summary>
+        [Description("A device is connected to clock output 2.")]
         Out2 = 0x4,
+
+        /// <summary>
+        /// A device is connected to clock output 3.
+        /// </summary>
+        [Description("A device is connected to clock output 3.")]
         Out3 = 0x8,
+
+        /// <summary>
+        /// A device is connected to clock output 4.
+        /// </summary>
+        [Description("A device is connected to clock output 4.")]
         Out4 = 0x10,
+
+        /// <summary>
+        /// A device is connected to clock output 5.
+        /// </summary>
+        [Description("A device is connected to clock output 5.")]
         Out5 = 0x20
     }
 
@@ -1856,7 +1889,15 @@ namespace Harp.TimestampGeneratorGen3
     [Flags]
     public enum RepeaterFlags : byte
     {
+        /// <summary>
+        /// Specifies that no flags are set.
+        /// </summary>
         None = 0x0,
+
+        /// <summary>
+        /// The device is a clock repeater.
+        /// </summary>
+        [Description("The device is a clock repeater.")]
         Repeater = 0x1
     }
 
@@ -1865,9 +1906,28 @@ namespace Harp.TimestampGeneratorGen3
     /// </summary>
     public enum BatteryRateConfiguration : byte
     {
+        /// <summary>
+        /// The battery charge is sent every minute.
+        /// </summary>
+        [Description("The battery charge is sent every minute.")]
         EveryMinute = 0,
+
+        /// <summary>
+        /// The battery charge is sent every 10 seconds.
+        /// </summary>
+        [Description("The battery charge is sent every 10 seconds.")]
         Every10Seconds = 1,
+
+        /// <summary>
+        /// The battery charge is sent every second.
+        /// </summary>
+        [Description("The battery charge is sent every second.")]
         EverySecond = 2,
+
+        /// <summary>
+        /// The battery charge is not sent.
+        /// </summary>
+        [Description("The battery charge is not sent.")]
         Never = 3
     }
 
@@ -1876,11 +1936,40 @@ namespace Harp.TimestampGeneratorGen3
     /// </summary>
     public enum TimerRate : byte
     {
+        /// <summary>
+        /// The timer counter is not sent.
+        /// </summary>
+        [Description("The timer counter is not sent.")]
         Disabled = 0,
+
+        /// <summary>
+        /// The timer counter is sent at 50 Hz.
+        /// </summary>
+        [Description("The timer counter is sent at 50 Hz.")]
         Timer50Hz = 1,
+
+        /// <summary>
+        /// The timer counter is sent at 100 Hz.
+        /// </summary>
+        [Description("The timer counter is sent at 100 Hz.")]
         Timer100Hz = 2,
+
+        /// <summary>
+        /// The timer counter is sent at 200 Hz.
+        /// </summary>
+        [Description("The timer counter is sent at 200 Hz.")]
         Timer200Hz = 3,
+
+        /// <summary>
+        /// The timer counter is sent at 500 Hz.
+        /// </summary>
+        [Description("The timer counter is sent at 500 Hz.")]
         Timer500Hz = 4,
+
+        /// <summary>
+        /// The timer counter is sent at 1000 Hz.
+        /// </summary>
+        [Description("The timer counter is sent at 1000 Hz.")]
         Timer1000Hz = 5
     }
 

@@ -192,24 +192,24 @@ typedef struct
 #define B_START_DISCHARGE                                (1<<1)       // Starts to discharge right away.
 #define B_START_CHARGE                                   (1<<2)       // Starts to charge right away.
 #define B_STOP                                           (1<<3)       // Stop any control of the battery and resume normal function.
-#define B_OUT0                                           (1<<0)       //
-#define B_OUT1                                           (1<<1)       //
-#define B_OUT2                                           (1<<2)       //
-#define B_OUT3                                           (1<<3)       //
-#define B_OUT4                                           (1<<4)       //
-#define B_OUT5                                           (1<<5)       //
-#define B_REPEATER                                       (1<<0)       //
+#define B_OUT0                                           (1<<0)       // A device is connected to clock output 0.
+#define B_OUT1                                           (1<<1)       // A device is connected to clock output 1.
+#define B_OUT2                                           (1<<2)       // A device is connected to clock output 2.
+#define B_OUT3                                           (1<<3)       // A device is connected to clock output 3.
+#define B_OUT4                                           (1<<4)       // A device is connected to clock output 4.
+#define B_OUT5                                           (1<<5)       // A device is connected to clock output 5.
+#define B_REPEATER                                       (1<<0)       // The device is a clock repeater.
 #define MSK_BATTERY_RATE_CONFIGURATION                   0x03         //
-#define GM_BATTERY_RATE_CONFIGURATION_EVERY_MINUTE       0x00         //
-#define GM_BATTERY_RATE_CONFIGURATION_EVERY10_SECONDS    0x01         //
-#define GM_BATTERY_RATE_CONFIGURATION_EVERY_SECOND       0x02         //
-#define GM_BATTERY_RATE_CONFIGURATION_NEVER              0x03         //
+#define GM_BATTERY_RATE_CONFIGURATION_EVERY_MINUTE       0x00         // The battery charge is sent every minute.
+#define GM_BATTERY_RATE_CONFIGURATION_EVERY10_SECONDS    0x01         // The battery charge is sent every 10 seconds.
+#define GM_BATTERY_RATE_CONFIGURATION_EVERY_SECOND       0x02         // The battery charge is sent every second.
+#define GM_BATTERY_RATE_CONFIGURATION_NEVER              0x03         // The battery charge is not sent.
 #define MSK_TIMER_RATE                                   0x07         //
-#define GM_TIMER_RATE_DISABLED                           0x00         //
-#define GM_TIMER_RATE_TIMER50_HZ                         0x01         //
-#define GM_TIMER_RATE_TIMER100_HZ                        0x02         //
-#define GM_TIMER_RATE_TIMER200_HZ                        0x03         //
-#define GM_TIMER_RATE_TIMER500_HZ                        0x04         //
-#define GM_TIMER_RATE_TIMER1000_HZ                       0x05         //
+#define GM_TIMER_RATE_DISABLED                           0x00         // The timer counter is not sent.
+#define GM_TIMER_RATE_TIMER50_HZ                         0x01         // The timer counter is sent at 50 Hz.
+#define GM_TIMER_RATE_TIMER100_HZ                        0x02         // The timer counter is sent at 100 Hz.
+#define GM_TIMER_RATE_TIMER200_HZ                        0x03         // The timer counter is sent at 200 Hz.
+#define GM_TIMER_RATE_TIMER500_HZ                        0x04         // The timer counter is sent at 500 Hz.
+#define GM_TIMER_RATE_TIMER1000_HZ                       0x05         // The timer counter is sent at 1000 Hz.
 
 #endif /* _APP_REGS_H_ */
