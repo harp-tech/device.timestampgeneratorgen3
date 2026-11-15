@@ -22,4 +22,4 @@ The device can be used from [Bonsai](https://bonsai-rx.org/) through the `Harp.T
 
 ## Licensing
 
-Each part of this repository is released under its own license. The `LICENSE` file in each folder states the license that applies to it.
+Each part of this repository is released under its own license. The `LICENSE` file at the root of the repository lists the licenses that apply to each folder.
