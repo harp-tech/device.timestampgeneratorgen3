@@ -19,6 +19,6 @@ Assembled units are available from the [Open Ephys store](https://open-ephys.org
 
 ## Acknowledgments
 
-Hardware design contributed by [OEPS](https://oeps.tech/), Bonsai interface by [NeuroGEARS](https://neurogears.org/), testing and feedback by [Allen Institute for Neural Dynamics](https://www.allenneuraldynamics.org/), and documentation by [Open Ephys](https://open-ephys.org/).
+Hardware design contributed by [OEPS](https://oeps.tech/), Bonsai interface by [NeuroGEARS](https://neurogears.org/), and documentation by [Open Ephys](https://open-ephys.org/). Developed and tested as part of the [Aeon platform](https://aeon.swc.ucl.ac.uk/) at the [Sainsbury Wellcome Centre](https://www.sainsburywellcome.org/). The platform is described in [Campagner et al. (2025)](https://doi.org/10.1101/2025.07.31.664513).
 
 [!INCLUDE [](./includes/version-footer.md)]
