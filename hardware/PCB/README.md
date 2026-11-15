@@ -1,15 +1,13 @@
-# Harp Timestamp Generator Gen1
+# Harp Timestamp Generator Gen3
 
 ## Licensing
 
-The designs, documentation, and photos available in this repository are free: you can redistribute it and/or modify it under the terms of the used license.
-Check file named LICENSE.
+Copyright OEPS 2021-2026. This source describes Open Hardware and is licensed under the CERN-OHL-S v2.
 
-Copyright OEPS 2021-2026
+You may redistribute and modify this source and make products using it under the terms of the CERN-OHL-S v2 (https://ohwr.org/cern_ohl_s_v2.txt), a copy of which is in the `LICENSE` file in this folder.
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/igo/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/igo/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/igo/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO License</a>.
+This source is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN-OHL-S v2 for applicable conditions.
 
-If your are interested in obtaining a license to sell this device, please contact info@oeps.tech
+Source location: https://github.com/harp-tech/device.timestampgeneratorgen3
 
-
-[1]: https://docs.google.com/spreadsheets/d/1aobmmEzBDethzIlrm1eg0eYkBqlyX3s9WbA9KgRwVQI/edit?usp=sharing
+As per CERN-OHL-S v2 section 4, should You produce hardware based on this source, You must where practicable maintain the Source Location visible on the external case of the Harp Timestamp Generator Gen3 or other products you make using this source.
